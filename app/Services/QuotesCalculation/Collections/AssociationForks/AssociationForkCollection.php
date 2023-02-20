@@ -24,18 +24,18 @@ class AssociationForkCollection implements AssociationForkCollectionInterface
     }
 
     /**
-     * Récupération du montant correspondant de la fourchette instanciée
-     * @param float $budget
+     * Récupération du montant correspondant de la fourchette correspondant au montant passé
+     * @param float $amount
      * @return float
      */
-    public function getAccurateForkAmount(float $budget): float {
-        $amount = 0;
+    public function getAccurateForkAmount(float $inAmount): float {
+        $outAmount = 0;
         foreach ($this->_forks as $fork) {
             /** @var AssociationFork $fork */
-            if ($fork->isInFork($budget)) {
-                $amount = $fork->getParam('amount');
+            if ($fork->isInFork($inAmount)) {
+                $outAmount = $fork->getParam('amount');
             }
         }
-        return $amount;
+        return $outAmount;
     }
 }

@@ -29,8 +29,8 @@ class QuoteTest extends TestCase
         ];
 
         $results = $this->_service->estimate($budget);
-        foreach ($results as $key => $result) {
-            $this->assertEquals(number_format($expected[$key], 2), number_format($result, 2));
+        foreach ($expected as $expectedKey => $expectedValue) {
+            $this->assertEquals(number_format($expectedValue, 2), number_format($results[$expectedKey], 2));
         }
     }
 
@@ -47,8 +47,8 @@ class QuoteTest extends TestCase
         ];
 
         $results = $this->_service->estimate($budget);
-        foreach ($results as $key => $result) {
-            $this->assertEquals(number_format($expected[$key], 2), number_format($result, 2));
+        foreach ($expected as $expectedKey => $expectedValue) {
+            $this->assertEquals(number_format($expectedValue, 2), number_format($results[$expectedKey], 2));
         }
     }
 
@@ -64,8 +64,8 @@ class QuoteTest extends TestCase
         ];
 
         $results = $this->_service->estimate($budget);
-        foreach ($results as $key => $result) {
-            $this->assertEquals(number_format($expected[$key], 2), number_format($result, 2));
+        foreach ($expected as $expectedKey => $expectedValue) {
+            $this->assertEquals(number_format($expectedValue, 2), number_format($results[$expectedKey], 2));
         }
     }
 
@@ -81,8 +81,8 @@ class QuoteTest extends TestCase
         ];
 
         $results = $this->_service->estimate($budget);
-        foreach ($results as $key => $result) {
-            $this->assertEquals(number_format($expected[$key], 2), number_format($result, 2));
+        foreach ($expected as $expectedKey => $expectedValue) {
+            $this->assertEquals(number_format($expectedValue, 2), number_format($results[$expectedKey], 2));
         }
     }
 
@@ -98,8 +98,8 @@ class QuoteTest extends TestCase
         ];
 
         $results = $this->_service->estimate($budget);
-        foreach ($results as $key => $result) {
-            $this->assertEquals(number_format($expected[$key], 2), number_format($result, 2));
+        foreach ($expected as $expectedKey => $expectedValue) {
+            $this->assertEquals(number_format($expectedValue, 2), number_format($results[$expectedKey], 2));
         }
     }
 
@@ -114,8 +114,8 @@ class QuoteTest extends TestCase
             'budget' => $budget
         ];
         $results = $this->_service->estimate($budget);
-        foreach ($results as $key => $result) {
-            $this->assertEquals(number_format($expected[$key], 2), number_format($result, 2));
+        foreach ($expected as $expectedKey => $expectedValue) {
+            $this->assertEquals(number_format($expectedValue, 2), number_format($results[$expectedKey], 2));
         }
     }
 
@@ -136,8 +136,8 @@ class QuoteTest extends TestCase
         ];
 
         $results = $this->_service->estimate($budget);
-        foreach ($results as $key => $result) {
-            $this->assertEquals(number_format($expected[$key], 2), number_format($result, 2));
+        foreach ($expected as $expectedKey => $expectedValue) {
+            $this->assertEquals(number_format($expectedValue, 2), number_format($results[$expectedKey], 2));
         }
     }
 }

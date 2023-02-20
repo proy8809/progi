@@ -3,5 +3,5 @@ namespace App\Services\QuotesCalculation\Collections\AssociationForks;
 
 interface AssociationForkCollectionInterface
 {
-    public function getAccurateForkAmount(float $budget): float;
+    public function getAccurateForkAmount(float $inAmount): float;
 }

@@ -2,7 +2,8 @@
 namespace App\Traits\QuotesCalculation;
 
 /**
- * Contient des fonctions utilitaires afin de centraliser/simplifier certaines opérations récurentes
+ * Contient des fonctions utilitaires afin de centraliser/simplifier certaines opérations réccurentes, notamment
+ * la récupération de certaines variables de configuration
  */
 trait QuotesCalculationUtilities
 {
@@ -78,5 +79,4 @@ trait QuotesCalculationUtilities
         $decimalPrctVendeur = ($this->getVendeurPrct() / 100);
         return (float) number_format($decimalPrctVendeur * $vehicleValue, 2, '.', '');
     }
-
 }

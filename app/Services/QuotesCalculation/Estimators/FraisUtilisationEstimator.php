@@ -9,28 +9,16 @@ class FraisUtilisationEstimator implements FraisEstimatorInterface
     use QuotesCalculationUtilities;
 
     /**
-     * Estime les frais d'utilisation d'un budget donné
+     * Estime le frais d'utilisation pour un budget donné
      * @param float $budget
      * @param array $estimations
      * @return array
      */
-    public function estimate(float $budget, array $estimations): array
+    public function estimate(Estimation $estimation): Estimation
     {
-        $outEstimations = [];
-        foreach ($estimations as $estimation) {
-            /** @var Estimation $estimation */
-            // Calculation du frais spéculé
-            $frais = $this->getUtilisationAccurateAmount($budget - $estimation->getSumFrais());
-
-            // On s'assure que le frais entre dans le budget
-            if (!$estimation->isWithinBudget($budget, $frais)) {
-                $frais = 0;
-            }
-
-            // On empile l'estimation dans la liste de sortie
-            $outEstimations[] = (clone $estimation)->setFraisUtilisation($frais);
-        }
-
-        return $outEstimations;
+        // On affecte la frais d'utilisation correspondant au budget restant
+        return $estimation->setFraisUtilisation(
+            $this->getUtilisationAccurateAmount($estimation->getRemainingBudget())
+        );
     }
 }

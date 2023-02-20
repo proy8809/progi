@@ -1,7 +1,9 @@
 <?php
 namespace App\Services\QuotesCalculation\Estimators;
 
+use App\Services\QuotesCalculation\Entities\Estimation\Estimation;
+
 interface FraisEstimatorInterface
 {
-    public function estimate(float $budget, array $estimations): array;
+    public function estimate(Estimation $estimation): Estimation;
 }

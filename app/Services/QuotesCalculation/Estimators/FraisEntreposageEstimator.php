@@ -14,17 +14,9 @@ class FraisEntreposageEstimator implements FraisEstimatorInterface
      * @param array $estimations
      * @return array
      */
-    public function estimate(float $budget, array $estimations): array
+    public function estimate(Estimation $estimation): Estimation
     {
-        // Calculation du frais spéculé
-        $frais = $this->getEntreposageAmount();
-
-        // On s'assure que le frais entre dans le budget
-        if ( $budget < $this->getEntreposageAmount() ) {
-            $frais = 0;
-        }
-
-        // On empile l'estimation dans la liste de sortie
-        return [ (new Estimation())->setFraisEntreposage( $frais ) ];
+        // On affecte le frais configuré pour l'entreposage
+        return $estimation->setFraisEntreposage($this->getEntreposageAmount());
     }
 }

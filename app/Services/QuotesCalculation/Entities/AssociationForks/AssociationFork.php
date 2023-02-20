@@ -40,30 +40,30 @@ class AssociationFork implements AssociationForkInterface
     }
 
     /**
-     * Est-ce qu'un montant est supérieur à la fourchette instanciée
+     * Est-ce qu'un montant est inférieur à la limite inférieure de la fourchette instanciée
      * @param float $amount
      * @return bool
      */
-    public function isOver(float $amount): bool {
-        if ( isset($this->_params['lte']) ) {
-            $condition = $amount >= $this->_params['lte'];
-        } else if ( isset($this->_params['lt']) ) {
-            $condition = $amount > $this->_params['lt'];
+    public function isUnder(float $amount): bool {
+        if ( isset($this->_params['gte']) ) {
+            $condition = $this->_params['gte'] <= $amount;
+        } else if ( isset($this->_params['gt']) ) {
+            $condition = $this->_params['gt'] < $amount;
         }
 
         return $condition;
     }
 
     /**
-     * Est-ce qu'un montant est inférieur à la fourchette instanciée
+     * Est-ce qu'un montant est supérieur à la limite inférieure de la fourchette instanciée
      * @param float $amount
      * @return bool
      */
-    public function isUnder(float $amount): bool {
+    public function isOver(float $amount): bool {
         if ( isset($this->_params['gte']) ) {
-            $condition = $amount <= $this->_params['gte'];
+            $condition = $this->_params['gte'] >= $amount;
         } else if ( isset($this->_params['gt']) ) {
-            $condition = $amount < $this->_params['gt'];
+            $condition = $this->_params['gt'] >= $amount;
         }
 
         return $condition;

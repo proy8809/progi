@@ -7,13 +7,14 @@ interface EstimationInterface
     public function setFraisAssociation(float $frais): EstimationInterface;
     public function setFraisUtilisation(float $frais): EstimationInterface;
     public function setFraisVendeur(float $frais): EstimationInterface;
+    public function setBudget(float $budget): EstimationInterface;
 
-    public function getFraisEntreposage(): float;
-    public function getFraisAssociation(): float;
-    public function getFraisUtilisation(): float;
-    public function getFraisVendeur(): float;
+    public function recalibrateFrais(): EstimationInterface;
+    public function estimateVehicleAmount(): void;
 
     public function getSumFrais(): float;
+    public function getRemainingBudget(): float;
 
-    public function isWithinBudget(float $budget, float $addedFrais = 0): bool;
+    public function toArray(): array;
+
 }

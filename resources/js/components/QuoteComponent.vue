@@ -36,6 +36,10 @@
                     <td class="text-end">Valeur du véhicule</td>
                     <td class="text-end">{{ formatMoney( quoteProp.value ) }}</td>
                 </tr>
+                <tr>
+                    <td class="text-end">Total</td>
+                    <td class="text-end">{{ formatMoney( quoteProp.total ) }}</td>
+                </tr>
             </tfoot>
         </table>
     </div>
@@ -54,6 +58,7 @@ export default {
                     association: 0,
                     vendeur: 0,
                     value: 0,
+                    total: 0
                 }
             }
         }

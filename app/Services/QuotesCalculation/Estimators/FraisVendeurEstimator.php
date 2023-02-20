@@ -15,13 +15,12 @@ class FraisVendeurEstimator implements FraisEstimatorInterface
      * 1 + PV (VV) = (B - FA)
      * VV = (B - FA) / 1 + PV
      * Après avoir isolé VV, on effectue la multiplication du pourcentage du spécial du vendeur
-     * @param float $budget
      * @param Estimation $estimation
      * @return float
      */
-    private function _estimateFraisVendeur(float $budget, Estimation $estimation): float { /** @var Estimation $estimation */
-        $remaining = $budget - $estimation->getSumFrais();
-        $vehicleValue = $remaining / (1 + ($this->getVendeurPrct() / 100));
+    private function _estimateFraisVendeur(Estimation $estimation): float {
+        /** @var Estimation $estimation */
+        $vehicleValue = $estimation->getRemainingBudget() / (1 + ($this->getVendeurPrct() / 100));
         return $this->getVendeurAccurateAmount($vehicleValue);
     }
 
@@ -31,21 +30,10 @@ class FraisVendeurEstimator implements FraisEstimatorInterface
      * @param array $estimations
      * @return array
      */
-    public function estimate(float $budget, array $estimations): array
+    public function estimate(Estimation $estimation): Estimation
     {
-        $outEstimations = [];
-        foreach ($estimations as $estimation) { /** @var Estimation $estimation */
-            // On calcule le frais du vendeur
-            $frais = $this->_estimateFraisVendeur($budget, $estimation);
-
-            // On s'assure que le frais entre dans le budget
-            if (!$estimation->isWithinBudget($budget, $frais)) {
-                $frais = 0;
-            }
-
-            // On empile l'estimation dans la liste de sortie
-            $outEstimations[] = (clone $estimation)->setFraisVendeur($frais);
-        }
-        return $outEstimations;
+        return $estimation->setFraisVendeur(
+            $this->_estimateFraisVendeur($estimation)
+        );
     }
 }

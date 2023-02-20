@@ -23,6 +23,7 @@ export default {
                 association: 0,
                 vendeur: 0,
                 value: 0,
+                total: 0
             },
         };
     },
